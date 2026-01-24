@@ -12,6 +12,7 @@ public:
 	void handleInput(float dt) override;
 	void update(float dt);
 	void render();
+	void spawnFood();
 
 private:
 
@@ -22,4 +23,10 @@ private:
 
 	// Default variables for level class.
 	
+	// Player variables
+	sf::CircleShape m_snake;
+	sf::Vector2f m_movementVector;
+	float m_snakeSpeed;
+	//Food variables
+	sf::CircleShape m_food;
 };
