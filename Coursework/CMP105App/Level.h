@@ -16,17 +16,10 @@ public:
 
 private:
 
+	sf::RectangleShape m_playAreaOne;
+	sf::RectangleShape m_playAreaTwo;
+
+	//initialisation of objects
 	Player m_playerOne{m_window.getSize()};
 	Food m_foodOne{m_window.getSize()};
-
-	// Default functions for rendering to the screen.
-
-	// Default variables for level class.
-	
-	// Player variables
-	sf::CircleShape m_snake;
-	sf::Vector2f m_movementVector;
-	float m_snakeSpeed;
-	//Food variables
-	sf::CircleShape m_food;
 };
