@@ -9,7 +9,8 @@ public:
 	sf::CircleShape getBody();
 	void PlayerInput(Input& input);
 	int getSpeed();
-	void MovePlayer(sf::Vector2u windowSize, float dt);
+	void MovePlayer(sf::RectangleShape playArea, float dt);
+	void ResetPosition(sf::RectangleShape playArea);
 
 private:
 	sf::CircleShape m_snake;

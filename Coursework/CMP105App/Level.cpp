@@ -14,18 +14,24 @@ Level::Level(sf::RenderWindow& hwnd, Input& in) :
 
 	m_playAreaOne.setFillColor(sf::Color::Yellow);
 	m_playAreaTwo.setFillColor(sf::Color::Blue);
+
+	m_playerOne.ResetPosition(m_playAreaTwo);
+	m_playerTwo.ResetPosition(m_playAreaOne);
 }
 
 // handle user input
 void Level::handleInput(float dt)
 {
 	m_playerOne.PlayerInput(m_input);
+	m_playerTwo.PlayerInput(m_input);
 }
 
 // Update game objects
 void Level::update(float dt){
 	
-	m_playerOne.MovePlayer(m_window.getSize(), dt);
+	m_playerOne.MovePlayer(m_playAreaTwo, dt);
+	m_playerTwo.MovePlayer(m_playAreaOne, dt);
+
 	m_foodOne.DetectCollision(m_playerOne.getBody(), m_window.getSize());
 }
 
@@ -39,6 +45,7 @@ void Level::render()
 
 	m_window.draw(m_foodOne.getBody());
 	m_window.draw(m_playerOne.getBody());
+	m_window.draw(m_playerTwo.getBody());
 
 	endDraw();
 }
