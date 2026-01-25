@@ -8,21 +8,21 @@ Player::Player(sf::Vector2u windowSize) {
 	m_snakeSpeed = 150.f;
 }
 
-void Player::PlayerInput(Input& input) {
+void Player::PlayerInput(Input& input, sf::Keyboard::Scancode ctrls[4]) {
 	//basic input using the input class
-	if (input.isKeyDown(sf::Keyboard::Scancode::W)) {
+	if (input.isKeyDown(ctrls[0])) {
 
 		m_movementVector = { 0.f, -m_snakeSpeed };
 	}
-	else if (input.isKeyDown(sf::Keyboard::Scancode::A)) {
+	else if (input.isKeyDown(ctrls[1])) {
 
 		m_movementVector = { -m_snakeSpeed, 0.f };
 	}
-	else if (input.isKeyDown(sf::Keyboard::Scancode::S)) {
+	else if (input.isKeyDown(ctrls[2])) {
 
 		m_movementVector = { 0.f, m_snakeSpeed };
 	}
-	else if (input.isKeyDown(sf::Keyboard::Scancode::D)) {
+	else if (input.isKeyDown(ctrls[3])) {
 
 		m_movementVector = { m_snakeSpeed, 0.f };
 	}

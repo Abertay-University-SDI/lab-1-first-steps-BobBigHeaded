@@ -22,8 +22,21 @@ Level::Level(sf::RenderWindow& hwnd, Input& in) :
 // handle user input
 void Level::handleInput(float dt)
 {
-	m_playerOne.PlayerInput(m_input);
-	m_playerTwo.PlayerInput(m_input);
+	sf::Keyboard::Scancode ctrlP1[4] = {
+		sf::Keyboard::Scancode::W,
+		sf::Keyboard::Scancode::A,
+		sf::Keyboard::Scancode::S,
+		sf::Keyboard::Scancode::D
+	};
+	sf::Keyboard::Scancode ctrlP2[4] = {
+		sf::Keyboard::Scancode::Up,
+		sf::Keyboard::Scancode::Left,
+		sf::Keyboard::Scancode::Down,
+		sf::Keyboard::Scancode::Right
+	};
+
+	m_playerOne.PlayerInput(m_input, ctrlP1);
+	m_playerTwo.PlayerInput(m_input, ctrlP2);
 }
 
 // Update game objects
