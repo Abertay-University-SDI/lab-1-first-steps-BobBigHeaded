@@ -1,31 +1,32 @@
 #include "Food.h"
 
+
 Food::Food() {
 	m_foodShape.setRadius(10.f);
 	m_foodShape.setFillColor(sf::Color::Red);
 }
 
 void Food::DetectCollision(sf::CircleShape playerBody, sf::RectangleShape playArea) {
-	float xDistance = m_foodShape.getPosition().x - playerBody.getPosition().x;
-	float yDistance = m_foodShape.getPosition().y - playerBody.getPosition().y;
+	//get the distance from each objects center and ensure it is positive
+	float xDistance = (m_foodShape.getPosition().x + m_foodShape.getRadius()) - (playerBody.getPosition().x + playerBody.getRadius());
+	float yDistance = (m_foodShape.getPosition().y + m_foodShape.getRadius()) - (playerBody.getPosition().y + playerBody.getRadius());
 	if (xDistance < 0.f) xDistance *= -1;
 	if (yDistance < 0.f) yDistance *= -1;
 
-	bool distanceXCalc = xDistance < playerBody.getRadius() + m_foodShape.getRadius();
-	bool distanceYCalc = yDistance < playerBody.getRadius() + m_foodShape.getRadius();
-
-	if (distanceXCalc && distanceYCalc){
-		Spawn(playArea);
-	}
+	//if within the bounds of each object then collided
+	bool distanceCalc = (xDistance + yDistance) < playerBody.getRadius() + m_foodShape.getRadius();
+	
+	if (distanceCalc) Spawn(playArea);
 }
 
 void Food::Spawn(sf::RectangleShape playArea){
+	//unsigned because rand() does not accept float
 	unsigned areaX = playArea.getSize().x;
 	unsigned areaY = playArea.getSize().y;
+	//diameter so multiple calls of getRadius() isn't needed
 	float diameter = m_foodShape.getRadius() * 2;
 
-	srand(time(0));
-
+	//ensure the random position is in the bounds of the area by adding a offset
 	float x = rand() % areaX + playArea.getPosition().x;
 	x += (x > playArea.getPosition().x + diameter) ? -diameter : diameter;
 
