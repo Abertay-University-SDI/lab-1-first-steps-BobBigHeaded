@@ -22,9 +22,15 @@ void Food::DetectCollision(sf::CircleShape playerBody, sf::RectangleShape playAr
 void Food::Spawn(sf::RectangleShape playArea){
 	unsigned areaX = playArea.getSize().x;
 	unsigned areaY = playArea.getSize().y;
+	float diameter = m_foodShape.getRadius() * 2;
 
-	float x = rand() % areaX + (playArea.getPosition().x - m_foodShape.getRadius()*2);
+	srand(time(0));
+
+	float x = rand() % areaX + playArea.getPosition().x;
+	x += (x > playArea.getPosition().x + diameter) ? -diameter : diameter;
+
 	float y = rand() % areaY + (playArea.getPosition().y - m_foodShape.getRadius()*2);
+	y += (y > playArea.getPosition().y + diameter) ? -diameter : diameter;
 
 	m_foodShape.setPosition({ x, y });
 }

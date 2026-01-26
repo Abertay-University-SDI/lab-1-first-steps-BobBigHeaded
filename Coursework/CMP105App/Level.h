@@ -12,10 +12,9 @@ public:
 	void handleInput(float dt) override;
 	void update(float dt);
 	void render();
-	void spawnFood();
 
 private:
-
+	//seperate areeas for both players
 	sf::RectangleShape m_playAreaOne;
 	sf::RectangleShape m_playAreaTwo;
 
