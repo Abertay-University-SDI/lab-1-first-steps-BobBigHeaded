@@ -20,7 +20,7 @@ private:
 	sf::RectangleShape m_playAreaTwo;
 
 	//initialisation of objects
-	Player m_playerOne{m_window.getSize()};
-	Player m_playerTwo{m_window.getSize()};
-	Food m_foodOne{m_window.getSize()};
+	Player m_playerOne{m_window.getSize(), sf::Color::Red};
+	Player m_playerTwo{m_window.getSize(), sf::Color::Blue};
+	Food m_foodOne;
 };

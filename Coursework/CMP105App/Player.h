@@ -5,7 +5,7 @@
 class Player
 {
 public:
-	Player(sf::Vector2u windowSize);
+	Player(sf::Vector2u windowSize, sf::Color bodyColour);
 	sf::CircleShape getBody();
 	void PlayerInput(Input& input, sf::Keyboard::Scancode ctrls[4]);
 	int getSpeed();
