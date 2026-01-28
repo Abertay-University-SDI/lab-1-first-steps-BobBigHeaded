@@ -13,8 +13,13 @@ public:
 	void ResetPosition(sf::RectangleShape playArea);
 
 private:
+	sf::Texture m_sprites{ sf::Vector2u(100, 100) };
+
 	sf::CircleShape m_snake;
 	sf::Vector2f m_movementVector;
 	float m_snakeSpeed;
+
+	std::vector<int> m_moveHistory;
+	std::vector<sf::Sprite> m_snakeBody;
 };
 
