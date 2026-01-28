@@ -19,7 +19,7 @@ private:
 	sf::Vector2f m_movementVector;
 	float m_snakeSpeed;
 
-	std::vector<int> m_moveHistory;
+	std::vector<sf::Vector2f> m_moveHistory;
 	std::vector<sf::Sprite> m_snakeBody;
 };
 

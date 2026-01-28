@@ -6,23 +6,31 @@ Player::Player(sf::Vector2u windowSize, sf::Color bodyColour) {
 	m_snake.setFillColor(bodyColour);
 	m_snake.setPosition({ windowSize.x * 0.5f, windowSize.y * 0.5f });
 	m_snakeSpeed = 150.f;
+
+	m_movementVector = { m_snakeSpeed, 0.f };
+
+	m_moveHistory.push_back(m_movementVector);
 }
 
 void Player::PlayerInput(Input& input, sf::Keyboard::Scancode ctrls[4]) {
 	//basic input using the input class
 	if (input.isKeyDown(ctrls[0])) {
+		if (m_movementVector.y == m_snakeSpeed) return;
 
 		m_movementVector = { 0.f, -m_snakeSpeed };
 	}
 	else if (input.isKeyDown(ctrls[1])) {
+		if (m_movementVector.x == m_snakeSpeed) return;
 
 		m_movementVector = { -m_snakeSpeed, 0.f };
 	}
 	else if (input.isKeyDown(ctrls[2])) {
+		if (m_movementVector.y == -m_snakeSpeed) return;
 
 		m_movementVector = { 0.f, m_snakeSpeed };
 	}
 	else if (input.isKeyDown(ctrls[3])) {
+		if (m_movementVector.x == -m_snakeSpeed) return;
 
 		m_movementVector = { m_snakeSpeed, 0.f };
 	}
